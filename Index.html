@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organizar fiestas</title>
+</head>
+<body>
+    <script>
+        // Array para almacenar las fiestas cotizadas
+        var fiestas = [];
+        do {
+            alert("Bienvenido a la mejor organización que organiza fiestas");
+            alert("MC FUN");
+            //Objeto para almacenar los detalles de la fiesta actual
+            var fiesta = {};
+//Solicitar detalles de la fiesta al usuario
+
+            //FECHA
+            function fecha(){
+                do {
+                    fiesta.fecha = prompt("Ingresa la fecha en el cual se realizará el evento (YYYY-MM-DD):");
+                    // Validar formato de la fecha (año-mes-dia)
+                    if (!/^\d{4}-\d{2}-\d{2}$/.test(fiesta.fecha)) {
+                        alert("La fecha debe estar en formato YYYY-MM-DD.");
+                    }
+                } while (!/^\d{4}-\d{2}-\d{2}$/.test(fiesta.fecha));
+            }
+            
+
+            //HORA
+            function hora(){
+                do {
+                    fiesta.hora = prompt("Ingresa la hora en la cual se realizará el evento (HH:MM):");
+                    // Validar formato de la hora (hora:minuto)
+                    if (!/^\d{2}:\d{2}$/.test(fiesta.hora)) {
+                        alert("La hora debe estar en formato HH:MM.");
+                    }
+                } while (!/^\d{2}:\d{2}$/.test(fiesta.hora));
+            }
+            //tipo de fiesta
+            function tipo() {
+                do {
+                    fiesta.tipoFiesta = prompt("1. Rock $1500\n2. Reguetton $1200\n3. Sonidera $1000\nIngresa el tipo de fiesta:");
+
+                    // Validar si la entrada es un número del 1 al 3 y no es nula
+                    if (fiesta.tipoFiesta !== null && !isNaN(fiesta.tipoFiesta) && (fiesta.tipoFiesta >= 1 && fiesta.tipoFiesta <= 3)) {
+                        // Convertir el número a la cadena correspondiente
+                        switch (fiesta.tipoFiesta) {
+                            case "1":
+                                fiesta.tipoFiestaMSG = "Rock";
+                                fiesta.preciotipo = 1500;
+                                break;
+                            case "2":
+                                fiesta.tipoFiestaMSG = "Reguetton";
+                                fiesta.preciotipo = 1200;
+                                break;
+                            case "3":
+                                fiesta.tipoFiestaMSG = "Sonidera";
+                                fiesta.preciotipo = 1000;
+                                break;
+                        }
+                    } else {
+                        alert("Ingresa un valor válido (1, 2 o 3) para el tipo de fiesta.");
+                    }
+                } while (fiesta.tipoFiesta === null || isNaN(fiesta.tipoFiesta) || !(fiesta.tipoFiesta >= 1 && fiesta.tipoFiesta <= 3));
+            }
+            //DECORACION
+            function decoracion() {
+            do {
+                fiesta.decoracion = prompt("1. Elegante $2000\n2. Temática $1500\n3. Sencilla $1000\nIngresa el tipo de decoración:");
+
+                //Validar si la entrada es un número del 1 al 3 y no es nula
+                    if (fiesta.decoracion !== null && !isNaN(fiesta.decoracion) && (fiesta.decoracion >= 1 && fiesta.decoracion <= 3)) {
+                        //Convertir el número a la cadena correspondiente y asignar el precio
+                        switch (fiesta.decoracion) {
+                            case "1":
+                                fiesta.decoracionMSG = "Elegante";
+                                fiesta.preciodecoracion = 2000;
+                                break;
+                            case "2":
+                                fiesta.decoracionMSG = "Temática";
+                                fiesta.preciodecoracion = 1500;
+                                break;
+                            case "3":
+                                fiesta.decoracionMSG = "Sencilla";
+                                fiesta.preciodecoracion = 1000;
+                                break;
+                        }
+                    } else {
+                        alert("Ingresa un valor válido (1, 2 o 3) para el tipo de decoración.");
+                    }
+            } while (fiesta.decoracion === null || isNaN(fiesta.decoracion) || !(fiesta.decoracion >= 1 && fiesta.decoracion <= 3));
+            }
+
+            //COMIDA
+            function comida() {
+                do {
+                    fiesta.comida = prompt("1. Buffet $100\n2. Menú a la carta $200\n3. Comida rápida $50\nIngresa el tipo de comida:");
+
+                    //Validar si la entrada es un número del 1 al 3 y no es nula
+                    if (fiesta.comida !== null && !isNaN(fiesta.comida) && (fiesta.comida >= 1 && fiesta.comida <= 3)) {
+                        //Convertir el número a la cadena correspondiente y asignar el precio
+                        switch (fiesta.comida) {
+                            case "1":
+                                fiesta.comidaMSG = "Buffet";
+                                fiesta.comidaprecio = 100;
+                                break;
+                            case "2":
+                                fiesta.comidaMSG = "Menú a la carta";
+                                fiesta.comidaprecio = 200;
+                                break;
+                            case "3":
+                                fiesta.comidaMSG = "Comida rápida";
+                                fiesta.comidaprecio = 50;
+                                break;
+                        }
+                    } else {
+                        alert("Ingresa un valor válido (1, 2 o 3) para el tipo de comida.");
+                    }
+                } while (fiesta.comida === null || isNaN(fiesta.comida) || !(fiesta.comida >= 1 && fiesta.comida <= 3));
+            }
+
+            
+            //BEBIDA
+            function bebida() {
+                do {
+                    fiesta.bebida = prompt("1. Bebidas alcohólicas $300\n2. Refrescos $100\n3. Agua $50\nIngresa el tipo de bebida:");
+
+                    //Validar si la entrada es un número del 1 al 3 y no es nula
+                    if (fiesta.bebida !== null && !isNaN(fiesta.bebida) && (fiesta.bebida >= 1 && fiesta.bebida <= 3)) {
+                        //Convertir el número a la cadena correspondiente y asignar el precio
+                        switch (fiesta.bebida) {
+                            case "1":
+                                fiesta.bebidaMSG = "Bebidas alcohólicas";
+                                fiesta.bebidaprecio = 300;
+                                break;
+                            case "2":
+                                fiesta.bebidaMSG = "Refrescos";
+                                fiesta.bebidaprecio = 100;
+                                break;
+                            case "3":
+                                fiesta.bebidaMSG = "Agua";
+                                fiesta.bebidaprecio = 50;
+                                break;
+                        }
+                    } else {
+                        alert("Ingresa un valor válido (1, 2 o 3) para el tipo de bebida.");
+                    }
+                } while (fiesta.bebida === null || isNaN(fiesta.bebida) || !(fiesta.bebida >= 1 && fiesta.bebida <= 3));
+            }
+
+            
+            // ENTRETENIMIENTO
+            function entretenimiento() {
+                    do {
+                        fiesta.entretenimiento = prompt("1. DJ $500\n2. Karaoke $300\n3. Grupo musical $1000\nIngresa el tipo de entretenimiento:");
+
+                        // Validar si la entrada es un número del 1 al 3 y no es nula
+                        if (fiesta.entretenimiento !== null && !isNaN(fiesta.entretenimiento) && (fiesta.entretenimiento >= 1 && fiesta.entretenimiento <= 3)) {
+                            // Convertir el número a la cadena correspondiente y asignar el precio
+                            switch (fiesta.entretenimiento) {
+                                case "1":
+                                    fiesta.entretenimientoMSG = "DJ";
+                                    fiesta.entretenimientoprecio = 500;
+                                    break;
+                                case "2":
+                                    fiesta.entretenimientoMSG = "Karaoke";
+                                    fiesta.entretenimientoprecio = 300;
+                                    break;
+                                case "3":
+                                    fiesta.entretenimientoMSG = "Grupo musical";
+                                    fiesta.entretenimientoprecio = 1000;
+                                    break;
+                            }
+                        } else {
+                            alert("Ingresa un valor válido (1, 2 o 3) para el tipo de entretenimiento.");
+                        }
+                    } while (fiesta.entretenimiento === null || isNaN(fiesta.entretenimiento) || !(fiesta.entretenimiento >= 1 && fiesta.entretenimiento <= 3));
+                }
+
+              
+            //DATOS DEL CLIENTE
+            // Nombre del anfitrión de la fiesta
+            function nombre(){
+                do {
+                    fiesta.nombre = prompt("Nombre del anfitrión de la fiesta:");
+                    if (fiesta.nombre !== null && /^[a-zA-Z]+$/.test(fiesta.nombre) && fiesta.nombre.length >= 3 && fiesta.nombre.length <= 20) {
+                        fiesta.nombre = fiesta.nombre.toUpperCase(); // Convertir el nombre a mayúsculas
+                        alert("Bienvenido: " + fiesta.nombre);
+                    } else {
+                        alert("Debe introducir un nombre válido con mínimo 3 caracteres y máximo 20.");
+                    }
+                } while (fiesta.nombre === null || !/^[a-zA-Z]+$/.test(fiesta.nombre) || fiesta.nombre.length < 3 || fiesta.nombre.length > 20);
+            }
+            //catidad de invitados
+            function solicitarNumeroInvitados() {
+                    do {
+                        fiesta.invitados = prompt("Por favor, ingresa la cantidad de invitados:");
+                        fiesta.invitados = parseInt(fiesta.invitados);
+
+                        // Validar si la entrada es un número y está dentro del rango válido
+                        if (!isNaN(fiesta.invitados) && fiesta.invitados > 0 && fiesta.invitados !== null) {
+                            // Salir del bucle si la entrada es un número válido
+                            break;
+                        } else {
+                            alert("Por favor, introduce una cantidad de invitados numérica válida (mayor que cero).");
+                        }
+                    } while (isNaN(fiesta.invitados) || fiesta.invitados <= 0);
+
+                    return fiesta.invitados;
+                }
+            function suma(){
+                fiesta.totalbebidas=fiesta.invitados*fiesta.bebidaprecio;
+                fiesta.totalcomida=fiesta.invitados*fiesta.comidaprecio;
+            }
+            //aqui se mandan a llamar todas la funciones
+            fecha();
+            hora();
+            tipo();
+            decoracion();
+            comida();
+            bebida();
+            entretenimiento();
+            nombre();
+            solicitarNumeroInvitados();
+            suma();
+                //Agregar la fiesta al array de fiestas
+            fiestas.push(fiesta);
+            //preguntar si quiere organizar otra fiest
+            var respuesta = confirm("Selecciona OK si quieres cotizar otra fiesta, si no, presiona Cancelar.");
+        } while (respuesta == true);
+        //Mostrar resumen de todas las fiestas cotizadas
+        alert("Resumen de fiestas cotizadas:");
+        for (var i = 0; i < fiestas.length; i++) {
+            var fiesta = fiestas[i];
+            fiesta.totaltodo= fiesta.preciotipo + fiesta.preciodecoracion + fiesta.entretenimientoprecio + fiesta.totalbebidas + fiesta.totalcomida;
+            alert("Fiesta " + (i + 1) + ":\n" +
+                "Fecha: " + fiesta.fecha + "\n" +
+                "Hora: " + fiesta.hora + "\n" +
+                "Nombre del alfiltrion"+ fiesta.nombre +"\n"+
+                "Tipo de fiesta: " + fiesta.tipoFiestaMSG + " precio: "+fiesta.preciotipo + "\n"+ 
+                "Decoración: " + fiesta.decoracionMSG + "precio: "+fiesta.preciodecoracion+"\n"+
+                "Comida: " + fiesta.comidaMSG + "\n" +
+                "Bebida: " + fiesta.bebidaMSG + "\n" +
+                "Entretenimiento: " + fiesta.entretenimientoMSG+"\n"+
+                "Entretenimiento Precio"+fiesta.entretenimientoprecio + "\n"+
+                "Bebidas individual: "+ fiesta.bebidaprecio +"\n" +
+                "Comida individual: "+ fiesta.comidaprecio +"\n"+
+                "Bebidas total: "+ fiesta.totalbebidas +"\n" +
+                "Comida total: "+ fiesta.totalcomida +"\n"+
+                "monto total: "+ fiesta.totaltodo +"\n");
+
+        }
+    </script>
+</body>
+</html>
